@@ -8,9 +8,9 @@ server {
         default_type "text/plain";
     }
 
-    location / {
-        return 301 https://$host$request_uri;
-    }
+#    location / {
+#        return 301 https://$host$request_uri;
+#    }
     
     access_log /var/log/nginx/trainee10_redirect.log;
 }
