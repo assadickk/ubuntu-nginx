@@ -16,8 +16,8 @@ server {
     ssl_certificate /etc/letsencrypt/live/trainee10.ddnsgeek.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/trainee10.ddnsgeek.com/privkey.pem;
     
-    root /var/www/trainee10.ddnsgeek.com;
-    index html/index.html;
+    root /var/www/trainee10.ddnsgeek.com/html;
+    index index.html;
 
     location = / {
         try_files $uri $uri/ =404;
@@ -27,19 +27,18 @@ server {
         proxy_pass http://127.0.0.1:8080;
     }
 
-    location /music {
-        alias /var/www/music/;
-        autoindex on;
-    }
-
-    location = /info.php {
-        proxy_pass http://127.0.0.1:8081;
-    }
-
-    location /secondserver {
-        proxy_pass http://192.168.1.100;
-    }
-
     location / {
         try_files $uri $uri/ =404;
+}
+
+server {
+    listen 8080;
+    server_name trainee10.ddnsgeek.com www.trainee10.ddnsgeek.com;
+
+    root /var/www/trainee10.ddnsgeek.com/html;
+    index content1.html;
+
+    location = / {
+        try_files $uri $uri/ =404;
+    }
 }
