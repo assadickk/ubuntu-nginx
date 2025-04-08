@@ -19,15 +19,10 @@ def sum_log():
 
 def write_codes():
     err500 = f"awk '$9 ~ /^5[0-9]{2}$/' {SUMMARY_LOG} >> {ERR500_LOG}"
-    subprocess.run(err500, shell=True)
-    try:
-        err400 = f"awk '$9 ~ /^4[0-9]{2}$/' {SUMMARY_LOG} >> {ERR400_LOG}"
-        result = subprocess.run(err400, shell=True, check=True, stderr=subprocess.PIPE, text=True)
-        print("Команда 400 выполнена:", result.stderr)
-    except subprocess.CalledProcessError as e:
-        print("Ошибка при записи 400:", e.stderr)
-    '''err400 = f"awk '$9 ~ /^4[0-9]{2}$/' {SUMMARY_LOG} >> {ERR400_LOG}"
-    subprocess.run(err400, shell=True)'''
+    subprocess.run(err500, shell=True, text=True)
+
+    err400 = f"awk '$9 ~ /^4[0-9]{2}$/' {SUMMARY_LOG} >> {ERR400_LOG}"
+    subprocess.run(err400, shell=True, text=True)
 
 def clear_log():
     if os.path.getsize(SUMMARY_LOG) > max_size:
