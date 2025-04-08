@@ -12,7 +12,7 @@ CLEAN_LOG = "/var/www/task6/logs/clean.log"
 ERR400_LOG = "/var/www/task6/logs/err400.log"
 ERR500_LOG = "/var/www/task6/logs/err500.log"
 
-max_size = 500 * 1024
+max_size = 300 * 1024
 
 def sum_log():
     subprocess.run(f"tail -n 10 {ACCESS_LOG} >> {SUMMARY_LOG} && tail -n 10 {ERROR_LOG} >> {SUMMARY_LOG}", shell=True)
