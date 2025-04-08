@@ -15,7 +15,7 @@ ERR500_LOG = "/var/www/task6/logs/err500.log"
 max_size = 500 * 1024
 
 def sum_log():
-    subprocess.run(f"cat {ACCESS_LOG} {ERROR_LOG} > {SUMMARY_LOG}", shell=True)
+    subprocess.run(f"tail -n 10 {ACCESS_LOG} >> {SUMMARY_LOG} && tail -n 10 {ERROR_LOG} >> {SUMMARY_LOG}", shell=True)
 
 def write_codes():
     err500 = "awk '$9 ~ /^5[0-9]{2}$/' %s > %s" % (SUMMARY_LOG, ERR500_LOG)
