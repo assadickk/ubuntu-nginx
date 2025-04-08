@@ -5,14 +5,14 @@ from datetime import datetime
 
 
 
-ACCESS_LOG = "var/www/task6/logs/access.log"
-ERROR_LOG = "var/www/task6/logs/error.log"
+ACCESS_LOG = "/var/www/task6/logs/access.log"
+ERROR_LOG = "/var/www/task6/logs/error.log"
 
-SUMMARY_LOG = "var/www/task6/logs/summary.log"
-CLEAN_LOG = "var/www/task6/logs/log_clean.log"
+SUMMARY_LOG = "/var/www/task6/logs/summary.log"
+CLEAN_LOG = "/var/www/task6/logs/log_clean.log"
 
-ERR400_LOG = "var/www/task6/logs/err400.log"
-ERR500_LOG = "var/www/task6/logs/err500.log"
+ERR400_LOG = "/var/www/task6/logs/err400.log"
+ERR500_LOG = "/var/www/task6/logs/err500.log"
 
 max_size = 300 * 1024
 
