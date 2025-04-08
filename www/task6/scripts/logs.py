@@ -3,6 +3,8 @@ import time
 import subprocess
 from datetime import datetime
 
+
+
 ACCESS_LOG = "var/www/task6/logs/access.log"
 ERROR_LOG = "var/www/task6/logs/error.log"
 
@@ -29,11 +31,13 @@ def clear_log():
         with open(CLEAN_LOG, "a") as f:
             f.write(f"{datetime.now()} Очистил логи\n")
         open(SUMMARY_LOG, "w").close()
+    else 
+        open(SUMMARY_LOG, "w").close()
 
 def main():
     while True:
-        sum_log(ACCESS_LOG, SUMMARY_LOG)
-        sum_log(ERROR_LOG, SUMMARY_LOG)
+        sum_log()
+        sum_log()
 
         write_codes()
 
