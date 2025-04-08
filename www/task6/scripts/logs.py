@@ -31,7 +31,7 @@ def clear_log():
         with open(CLEAN_LOG, "a") as f:
             f.write(f"{datetime.now()} Очистил логи\n")
         open(SUMMARY_LOG, "w").close()
-    else 
+    else:
         open(SUMMARY_LOG, "w").close()
 
 def main():
