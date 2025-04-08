@@ -7,7 +7,7 @@ ACCESS_LOG = "/var/www/task6/logs/access.log"
 ERROR_LOG = "/var/www/task6/logs/error.log"
 
 SUMMARY_LOG = "/var/www/task6/logs/summary.log"
-CLEAN_LOG = "/var/www/task6/logs/log_clean.log"
+CLEAN_LOG = "/var/www/task6/logs/clean.log"
 
 ERR400_LOG = "/var/www/task6/logs/err400.log"
 ERR500_LOG = "/var/www/task6/logs/err500.log"
@@ -26,10 +26,12 @@ def write_codes():
 
 def clear_log():
     if os.path.getsize(SUMMARY_LOG) > max_size:
-        with open(CLEAN_LOG, "a") as f:
-            f.write(f"{datetime.now()} Очистил логи\n")
-        open(SUMMARY_LOG, "w").close()
-
+            with open(CLEAN_LOG, "a") as f:
+                f.write(f"{datetime.now()} Очистил логи (размер был: {current_size} байт)\n")
+            open(SUMMARY_LOG, "w").close()
+            print(f"Лог очищен. Размер был: {current_size} байт")  
+        else:
+            print(f"Текущий размер: {current_size} байт (лимит: {max_size} байт)")
 def main():
     while True:
         sum_log()
