@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="text-align: center;">
+    <h1>Загрузка CPU сейчас</h1>
+    <br><br>
+    <p><span id="cpu">погодь...</span></p>
+</body>
+
+<script>
+    function update(){
+        fetch('../logs/cpu.log', {headers: {'Cache-Control': 'no-cache'}})
+            .then(r => r.text())
+            .then(data => {
+                document.getElementById('cpu').textContent = data;
+            });
+    }
+    
+    setInterval(update, 1000);
+    update();
+</script>
+</html>
