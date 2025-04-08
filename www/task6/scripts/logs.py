@@ -26,12 +26,13 @@ def write_codes():
 
 def clear_log():
     if os.path.getsize(SUMMARY_LOG) > max_size:
-            with open(CLEAN_LOG, "a") as f:
-                f.write(f"{datetime.now()} Очистил логи (размер был: {current_size} байт)\n")
-            open(SUMMARY_LOG, "w").close()
-            print(f"Лог очищен. Размер был: {current_size} байт")  
-        else:
-            print(f"Текущий размер: {current_size} байт (лимит: {max_size} байт)")
+        with open(CLEAN_LOG, "a") as f:
+            f.write(f"{datetime.now()} Очистил логи (размер был: {current_size} байт)\n")
+        open(SUMMARY_LOG, "w").close()
+        print(f"Лог очищен. Размер был: {current_size} байт")  
+    else:
+        print(f"Текущий размер: {current_size} байт (лимит: {max_size} байт)")
+        
 def main():
     while True:
         sum_log()
