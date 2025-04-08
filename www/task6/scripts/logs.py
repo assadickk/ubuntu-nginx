@@ -18,11 +18,11 @@ def sum_log():
     subprocess.run(f"cat {ACCESS_LOG} {ERROR_LOG} > {SUMMARY_LOG}", shell=True)
 
 def write_codes():
-    err500 = (f"awk '$9 ~ /^5[0-9]{2}$/' {SUMMARY_LOG} >> {ERR500_LOG}")
-    subprocess.run(err500, shell=True, text=True)
+    #err500 = (f"awk '$9 ~ /^5[0-9]$/' {SUMMARY_LOG} >> {ERR500_LOG}")
+    subprocess.run(f"awk '$9 ~ /^5[0-9][0-9]$/' {SUMMARY_LOG} >> {ERR500_LOG}", shell=True)
 
-    err400 = (f"awk '$9 ~ /^4[0-9]{2}$/' {SUMMARY_LOG} >> {ERR400_LOG}")
-    subprocess.run(err400, shell=True, text=True)
+    #err400 = (f"awk '$9 ~ /^4[0-9][0-9]$/' {SUMMARY_LOG} >> {ERR400_LOG}")
+    subprocess.run(f"awk '$9 ~ /^4[0-9][0-9]$/' /var/www/task6/logs/summary.log >> /var/www/task6/logs/err400.log", shell=True)
 
 def clear_log():
     if os.path.getsize(SUMMARY_LOG) > max_size:
