@@ -3,8 +3,6 @@ import time
 import subprocess
 from datetime import datetime
 
-
-
 ACCESS_LOG = "/var/www/task6/logs/access.log"
 ERROR_LOG = "/var/www/task6/logs/error.log"
 
@@ -20,10 +18,10 @@ def sum_log():
     subprocess.run(f"cat {ACCESS_LOG} {ERROR_LOG} > {SUMMARY_LOG}", shell=True)
 
 def write_codes():
-    err500 = f"awk '/^5[0-9]{2}$/' {SUMMARY_LOG} >> {ERR500_LOG}"
+    err500 = f"awk '$9 ~ /^5[0-9]{2}$/ {print}' {SUMMARY_LOG} >> {ERR500_LOG}"
     subprocess.run(err500, shell=True)
 
-    err400 = f"awk '/^4[0-9]{2}$/' {SUMMARY_LOG} >> {ERR400_LOG}"
+    err400 = f"awk '$9 ~ /^4[0-9]{2}$/ {print}' {SUMMARY_LOG} >> {ERR400_LOG}"
     subprocess.run(err400, shell=True)
 
 def clear_log():
