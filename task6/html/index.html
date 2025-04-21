@@ -14,7 +14,7 @@
 
 <script>
     function update(){
-        fetch('../logs/cpu.log', {headers: {'Cache-Control': 'no-cache'}})
+        fetch('../logs/cpu.log')
             .then(r => r.text())
             .then(data => {
                 document.getElementById('cpu').textContent = data;
